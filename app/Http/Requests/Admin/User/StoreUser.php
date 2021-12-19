@@ -26,7 +26,6 @@ class StoreUser extends FormRequest
     public function rules(): array
     {
         return [
-            'age' => ['required', 'integer'],
             'nom' => ['required', 'string'],
             'prenom' => ['required', 'string'],
             'email' => ['required', 'email', Rule::unique('users', 'email'), 'string'],

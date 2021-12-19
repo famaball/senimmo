@@ -450,5 +450,158 @@ return [
         ],
     ],
 
+    'user' => [
+        'title' => 'Users',
+
+        'actions' => [
+            'index' => 'Users',
+            'create' => 'New User',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'age' => 'Age',
+            'nom' => 'Nom',
+            'prenom' => 'Prenom',
+            'email' => 'Email',
+            'email_verified_at' => 'Email verified at',
+            'mot_de_passe' => 'Mot de passe',
+            'telephone' => 'Telephone',
+            'id_profile' => 'Id profile',
+            'id_agence' => 'Id agence',
+            
+        ],
+    ],
+
+    'user' => [
+        'title' => 'Users',
+
+        'actions' => [
+            'index' => 'Users',
+            'create' => 'New User',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            'prenom' => 'Prenom',
+            'email' => 'Email',
+            'email_verified_at' => 'Email verified at',
+            'mot_de_passe' => 'Mot de passe',
+            'telephone' => 'Telephone',
+            'id_profile' => 'Id profile',
+            'id_agence' => 'Id agence',
+            
+        ],
+    ],
+
+    'profile' => [
+        'title' => 'Profile',
+
+        'actions' => [
+            'index' => 'Profile',
+            'create' => 'New Profile',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            'description' => 'Description',
+            
+        ],
+    ],
+
+    'role' => [
+        'title' => 'Roles',
+
+        'actions' => [
+            'index' => 'Roles',
+            'create' => 'New Role',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'name' => 'Name',
+            'guard_name' => 'Guard name',
+            
+        ],
+    ],
+
+    'permission' => [
+        'title' => 'Permissions',
+
+        'actions' => [
+            'index' => 'Permissions',
+            'create' => 'New Permission',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'name' => 'Name',
+            'guard_name' => 'Guard name',
+            
+        ],
+    ],
+
+    'roles-has-permission' => [
+        'title' => 'Roles Has Permissions',
+
+        'actions' => [
+            'index' => 'Roles Has Permissions',
+            'create' => 'New Roles Has Permission',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            
+        ],
+    ],
+
+    'role-has-permission' => [
+        'title' => 'Role Has Permissions',
+
+        'actions' => [
+            'index' => 'Role Has Permissions',
+            'create' => 'New Role Has Permission',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'permission_id' => 'Permission',
+            'role_id' => 'Role',
+            
+        ],
+    ],
+
+    'user' => [
+        'title' => 'Users',
+
+        'actions' => [
+            'index' => 'Users',
+            'create' => 'New User',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            'prenom' => 'Prenom',
+            'email' => 'Email',
+            'email_verified_at' => 'Email verified at',
+            'mot_de_passe' => 'Mot de passe',
+            'telephone' => 'Telephone',
+            'id_roles' => 'Id roles',
+            'id_agence' => 'Id agence',
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

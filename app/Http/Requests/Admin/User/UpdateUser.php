@@ -26,7 +26,6 @@ class UpdateUser extends FormRequest
     public function rules(): array
     {
         return [
-            'age' => ['sometimes', 'integer'],
             'nom' => ['sometimes', 'string'],
             'prenom' => ['sometimes', 'string'],
             'email' => ['sometimes', 'email', Rule::unique('users', 'email')->ignore($this->user->getKey(), $this->user->getKeyName()), 'string'],

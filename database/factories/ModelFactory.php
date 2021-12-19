@@ -278,3 +278,77 @@ $factory->define(App\Models\Bien::class, static function (Faker\Generator $faker
         
     ];
 });
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\User::class, static function (Faker\Generator $faker) {
+    return [
+        'nom' => $faker->sentence,
+        'prenom' => $faker->sentence,
+        'email' => $faker->email,
+        'email_verified_at' => $faker->dateTime,
+        'mot_de_passe' => $faker->sentence,
+        'remember_token' => null,
+        'telephone' => $faker->sentence,
+        'id_profile' => $faker->randomNumber(5),
+        'id_agence' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Role::class, static function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->firstName,
+        'guard_name' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Permission::class, static function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->firstName,
+        'guard_name' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\RolesHasPermission::class, static function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\RoleHasPermission::class, static function (Faker\Generator $faker) {
+    return [
+        'permission_id' => $faker->randomNumber(5),
+        'role_id' => $faker->randomNumber(5),
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\User::class, static function (Faker\Generator $faker) {
+    return [
+        'nom' => $faker->sentence,
+        'prenom' => $faker->sentence,
+        'email' => $faker->email,
+        'email_verified_at' => $faker->dateTime,
+        'mot_de_passe' => $faker->sentence,
+        'remember_token' => null,
+        'telephone' => $faker->sentence,
+        'id_roles' => $faker->randomNumber(5),
+        'id_agence' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});

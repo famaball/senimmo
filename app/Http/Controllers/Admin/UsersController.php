@@ -37,7 +37,7 @@ class UsersController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'age', 'nom', 'prenom', 'email', 'email_verified_at', 'mot_de_passe', 'telephone', 'id_profile', 'id_agence'],
+            ['id', 'nom', 'prenom', 'email', 'email_verified_at', 'mot_de_passe', 'telephone', 'id_profile', 'id_agence'],
 
             // set columns to searchIn
             ['id', 'nom', 'prenom', 'email', 'mot_de_passe', 'telephone']

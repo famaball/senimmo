@@ -1,11 +1,3 @@
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('age'), 'has-success': fields.age && fields.age.valid }">
-    <label for="age" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.user.columns.age') }}</label>
-        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.age" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('age'), 'form-control-success': fields.age && fields.age.valid}" id="age" name="age" placeholder="{{ trans('admin.user.columns.age') }}">
-        <div v-if="errors.has('age')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('age') }}</div>
-    </div>
-</div>
-
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('nom'), 'has-success': fields.nom && fields.nom.valid }">
     <label for="nom" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.user.columns.nom') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
@@ -57,13 +49,28 @@
     </div>
 </div>
 
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_profile'), 'has-success': fields.id_profile && fields.id_profile.valid }">
-    <label for="id_profile" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.user.columns.id_profile') }}</label>
+
+
+
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_roles'), 'has-success': fields.id_roles && fields.id_roles.valid }">
+    <label for="id_roles" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.user.columns.id_roles') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.id_profile" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('id_profile'), 'form-control-success': fields.id_profile && fields.id_profile.valid}" id="id_profile" name="id_profile" placeholder="{{ trans('admin.user.columns.id_profile') }}">
-        <div v-if="errors.has('id_profile')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_profile') }}</div>
+
+            <select name="id_roles" id="id_roles" v-model="form.id_roles" v-validate="'required|integer'" class="form-control"
+            :class="{'form-control-danger': errors.has('id_roles'), 'form-control-success': fields.id_roles && fields.id_roles.valid}"
+            placeholder="{{ trans('admin.user.columns.id_roles') }}">
+                @foreach($roles as $role)
+                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @endforeach
+            </select>
+
+        <input type="text" v-model="form.id_roles" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('id_roles'), 'form-control-success': fields.id_roles && fields.id_roles.valid}" id="id_roles" name="id_roles" placeholder="{{ trans('admin.user.columns.id_roles') }}">
+        <div v-if="errors.has('id_roles')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_roles') }}</div>
     </div>
 </div>
+
+
+
 
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_agence'), 'has-success': fields.id_agence && fields.id_agence.valid }">
     <label for="id_agence" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.user.columns.id_agence') }}</label>

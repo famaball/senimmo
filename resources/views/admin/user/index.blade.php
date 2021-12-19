@@ -50,7 +50,6 @@
                                         </th>
 
                                         <th is='sortable' :column="'id'">{{ trans('admin.user.columns.id') }}</th>
-                                        <th is='sortable' :column="'age'">{{ trans('admin.user.columns.age') }}</th>
                                         <th is='sortable' :column="'nom'">{{ trans('admin.user.columns.nom') }}</th>
                                         <th is='sortable' :column="'prenom'">{{ trans('admin.user.columns.prenom') }}</th>
                                         <th is='sortable' :column="'email'">{{ trans('admin.user.columns.email') }}</th>
@@ -63,7 +62,7 @@
                                         <th></th>
                                     </tr>
                                     <tr v-show="(clickedBulkItemsCount > 0) || isClickedAll">
-                                        <td class="bg-bulk-info d-table-cell text-center" colspan="12">
+                                        <td class="bg-bulk-info d-table-cell text-center" colspan="11">
                                             <span class="align-middle font-weight-light text-dark">{{ trans('brackets/admin-ui::admin.listing.selected_items') }} @{{ clickedBulkItemsCount }}.  <a href="#" class="text-primary" @click="onBulkItemsClickedAll('/admin/users')" v-if="(clickedBulkItemsCount < pagination.state.total)"> <i class="fa" :class="bulkCheckingAllLoader ? 'fa-spinner' : ''"></i> {{ trans('brackets/admin-ui::admin.listing.check_all_items') }} @{{ pagination.state.total }}</a> <span class="text-primary">|</span> <a
                                                         href="#" class="text-primary" @click="onBulkItemsClickedAllUncheck()">{{ trans('brackets/admin-ui::admin.listing.uncheck_all_items') }}</a>  </span>
 
@@ -83,7 +82,6 @@
                                         </td>
 
                                     <td>@{{ item.id }}</td>
-                                        <td>@{{ item.age }}</td>
                                         <td>@{{ item.nom }}</td>
                                         <td>@{{ item.prenom }}</td>
                                         <td>@{{ item.email }}</td>

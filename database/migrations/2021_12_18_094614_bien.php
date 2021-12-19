@@ -21,7 +21,7 @@ class Bien extends Migration
             $table->string('type');
             $table->string('surface');
             $table->string('description');
-            $table->binary('image');
+            $table->string('image');
             $table->timestamps();
 
             $table->integer('id_user')->unsigned();

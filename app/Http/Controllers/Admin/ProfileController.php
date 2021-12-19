@@ -3,186 +3,151 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Profile\BulkDestroyProfile;
-use App\Http\Requests\Admin\Profile\DestroyProfile;
-use App\Http\Requests\Admin\Profile\IndexProfile;
-use App\Http\Requests\Admin\Profile\StoreProfile;
-use App\Http\Requests\Admin\Profile\UpdateProfile;
-use App\Models\Profile;
-use Brackets\AdminListing\Facades\AdminListing;
-use Exception;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    public $adminUser;
 
     /**
-     * Display a listing of the resource.
+     * Guard used for admin user
      *
-     * @param IndexProfile $request
-     * @return array|Factory|View
+     * @var string
      */
-    public function index(IndexProfile $request)
+    protected $guard = 'admin';
+
+    public function __construct()
     {
-        // create and AdminListing instance for a specific model and
-        $data = AdminListing::create(Profile::class)->processRequestAndGet(
-            // pass the request with params
-            $request,
+        // TODO add authorization
+        $this->guard = config('admin-auth.defaults.guard');
+    }
 
-            // set columns to query
-            ['id', 'nom', 'description'],
-
-            // set columns to searchIn
-            ['id', 'nom', 'description']
-        );
-
-        if ($request->ajax()) {
-            if ($request->has('bulk')) {
-                return [
-                    'bulkItems' => $data->pluck('id')
-                ];
-            }
-            return ['data' => $data];
+    /**
+     * Get logged user before each method
+     *
+     * @param Request $request
+     */
+    protected function setUser($request)
+    {
+        if (empty($request->user($this->guard))) {
+            abort(404, 'Admin User not found');
         }
 
-        return view('admin.profile.index', ['data' => $data]);
+        $this->adminUser = $request->user($this->guard);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for editing logged user profile.
      *
-     * @throws AuthorizationException
+     * @param Request $request
      * @return Factory|View
      */
-    public function create()
+    public function editProfile(Request $request)
     {
-        $this->authorize('admin.profile.create');
+        $this->setUser($request);
 
-        return view('admin.profile.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param StoreProfile $request
-     * @return array|RedirectResponse|Redirector
-     */
-    public function store(StoreProfile $request)
-    {
-        // Sanitize input
-        $sanitized = $request->getSanitized();
-
-        // Store the Profile
-        $profile = Profile::create($sanitized);
-
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/profiles'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
-        }
-
-        return redirect('admin/profiles');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Profile $profile
-     * @throws AuthorizationException
-     * @return void
-     */
-    public function show(Profile $profile)
-    {
-        $this->authorize('admin.profile.show', $profile);
-
-        // TODO your code goes here
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Profile $profile
-     * @throws AuthorizationException
-     * @return Factory|View
-     */
-    public function edit(Profile $profile)
-    {
-        $this->authorize('admin.profile.edit', $profile);
-
-
-        return view('admin.profile.edit', [
-            'profile' => $profile,
+        return view('admin.profile.edit-profile', [
+            'adminUser' => $this->adminUser,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateProfile $request
-     * @param Profile $profile
+     * @param Request $request
+     * @throws ValidationException
      * @return array|RedirectResponse|Redirector
      */
-    public function update(UpdateProfile $request, Profile $profile)
+    public function updateProfile(Request $request)
     {
+        $this->setUser($request);
+        $adminUser = $this->adminUser;
+
+        // Validate the request
+        $this->validate($request, [
+            'first_name' => ['nullable', 'string'],
+            'last_name' => ['nullable', 'string'],
+            'email' => ['sometimes', 'email', Rule::unique('admin_users', 'email')->ignore($this->adminUser->getKey(), $this->adminUser->getKeyName()), 'string'],
+            'language' => ['sometimes', 'string'],
+
+        ]);
+
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        $sanitized = $request->only([
+            'first_name',
+            'last_name',
+            'email',
+            'language',
 
-        // Update changed values Profile
-        $profile->update($sanitized);
+        ]);
+
+        // Update changed values AdminUser
+        $this->adminUser->update($sanitized);
 
         if ($request->ajax()) {
-            return [
-                'redirect' => url('admin/profiles'),
-                'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
-            ];
+            return ['redirect' => url('admin/profile'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }
 
-        return redirect('admin/profiles');
+        return redirect('admin/profile');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Show the form for editing the specified resource.
      *
-     * @param DestroyProfile $request
-     * @param Profile $profile
-     * @throws Exception
-     * @return ResponseFactory|RedirectResponse|Response
+     * @param Request $request
+     * @return Factory|View
      */
-    public function destroy(DestroyProfile $request, Profile $profile)
+    public function editPassword(Request $request)
     {
-        $profile->delete();
+        $this->setUser($request);
 
-        if ($request->ajax()) {
-            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
-        }
-
-        return redirect()->back();
+        return view('admin.profile.edit-password', [
+            'adminUser' => $this->adminUser,
+        ]);
     }
 
+
     /**
-     * Remove the specified resources from storage.
+     * Update the specified resource in storage.
      *
-     * @param BulkDestroyProfile $request
-     * @throws Exception
-     * @return Response|bool
+     * @param Request $request
+     * @throws ValidationException
+     * @return array|RedirectResponse|Redirector
      */
-    public function bulkDestroy(BulkDestroyProfile $request) : Response
+    public function updatePassword(Request $request)
     {
-        DB::transaction(static function () use ($request) {
-            collect($request->data['ids'])
-                ->chunk(1000)
-                ->each(static function ($bulkChunk) {
-                    Profile::whereIn('id', $bulkChunk)->delete();
+        $this->setUser($request);
+        $adminUser = $this->adminUser;
 
-                    // TODO your code goes here
-                });
-        });
+        // Validate the request
+        $this->validate($request, [
+            'password' => ['sometimes', 'confirmed', 'min:7', 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9]).*$/', 'string'],
 
-        return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
+        ]);
+
+        // Sanitize input
+        $sanitized = $request->only([
+            'password',
+
+        ]);
+
+        //Modify input, set hashed password
+        $sanitized['password'] = Hash::make($sanitized['password']);
+
+        // Update changed values AdminUser
+        $this->adminUser->update($sanitized);
+
+        if ($request->ajax()) {
+            return ['redirect' => url('admin/password'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+        }
+
+        return redirect('admin/password');
     }
 }

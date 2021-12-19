@@ -5,7 +5,6 @@ Vue.component('user-form', {
     data: function() {
         return {
             form: {
-                age:  '' ,
                 nom:  '' ,
                 prenom:  '' ,
                 email:  '' ,
