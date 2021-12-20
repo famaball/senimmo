@@ -14,7 +14,7 @@ Vue.component('bien-form', {
                 image:  '' ,
                 id_user:  '' ,
                 id_agence:  '' ,
-                id_type_bien:  '' ,
+                id_typebien:  '' ,
                 id_statut_bien:  '' ,
                 id_etat_bien:  '' ,
                 id_localite:  '' ,

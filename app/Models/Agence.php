@@ -14,17 +14,17 @@ class Agence extends Model
         'telephone',
         'email',
         'email_verified_at',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'email_verified_at',
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -32,5 +32,15 @@ class Agence extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/agences/'.$this->getKey());
+    }
+
+    public function user()
+    {
+        $this->hasMany(user::class);
+    }
+
+    public function bien()
+    {
+        $this->hasMany(bien::class);
     }
 }

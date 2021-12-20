@@ -35,7 +35,7 @@ class UpdateBien extends FormRequest
             'image' => ['sometimes', 'string'],
             'id_user' => ['sometimes', 'integer'],
             'id_agence' => ['sometimes', 'integer'],
-            'id_type_bien' => ['sometimes', 'integer'],
+            'id_typebien' => ['sometimes', 'integer'],
             'id_statut_bien' => ['sometimes', 'integer'],
             'id_etat_bien' => ['sometimes', 'integer'],
             'id_localite' => ['sometimes', 'integer'],

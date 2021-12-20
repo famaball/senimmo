@@ -8,6 +8,8 @@ use App\Http\Requests\Admin\User\DestroyUser;
 use App\Http\Requests\Admin\User\IndexUser;
 use App\Http\Requests\Admin\User\StoreUser;
 use App\Http\Requests\Admin\User\UpdateUser;
+use App\Models\Role;
+use App\Models\Agence;
 use App\Models\User;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
@@ -37,7 +39,7 @@ class UsersController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'nom', 'prenom', 'email', 'email_verified_at', 'mot_de_passe', 'telephone', 'id_profile', 'id_agence'],
+            ['id', 'nom', 'prenom', 'email', 'email_verified_at', 'mot_de_passe', 'telephone', 'id_roles', 'id_agence'],
 
             // set columns to searchIn
             ['id', 'nom', 'prenom', 'email', 'mot_de_passe', 'telephone']
@@ -63,9 +65,11 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $role = Role::all();
+        $agence = Agence::all();
         $this->authorize('admin.user.create');
 
-        return view('admin.user.create');
+        return view('admin.user.create',['role'=>$role],['agence'=>$agence]);
     }
 
     /**
@@ -77,10 +81,22 @@ class UsersController extends Controller
     public function store(StoreUser $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        //$sanitized = $request->getSanitized();
 
         // Store the User
-        $user = User::create($sanitized);
+        //$user = User::create($sanitized);
+
+        $user = new User();
+        $user->nom = $request['nom']=$request['nom'];
+        $user->prenom = $request['prenom']=$request['prenom'];
+        $user->email = $request['email']=$request['email'];
+        $user->email_verified_at = $request['email_verified_at']=$request['email_verified_at'];
+        $user->mot_de_passe = $request['mot_de_passe']=$request['mot_de_passe'];
+        $user->telephone = $request['telephone']=$request['telephone'];
+        $user->id_roles = $request['id_roles']=$request['id_roles'];
+        $user->id_agence = $request['id_agence']=$request['id_agence'];
+
+        $user->save();
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/users'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

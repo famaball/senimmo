@@ -11,16 +11,16 @@ class EtatBien extends Model
     protected $fillable = [
         'designation',
         'description',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -28,5 +28,10 @@ class EtatBien extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/etat-biens/'.$this->getKey());
+    }
+
+    public function bien()
+    {
+        $this->hasMany(bien::class);
     }
 }

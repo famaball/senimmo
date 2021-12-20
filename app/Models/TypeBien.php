@@ -4,28 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TypeBien extends Model
+class Typebien extends Model
 {
-    protected $table = 'type_bien';
+    protected $table = 'typebien';
 
     protected $fillable = [
         'nom',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
     public function getResourceUrlAttribute()
     {
-        return url('/admin/type-biens/'.$this->getKey());
+        return url('/admin/typebiens/'.$this->getKey());
+    }
+
+    public function bien()
+    {
+        $this->hasMany(bien::class);
     }
 }

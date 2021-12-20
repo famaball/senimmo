@@ -59,7 +59,7 @@
                                         <th is='sortable' :column="'image'">{{ trans('admin.bien.columns.image') }}</th>
                                         <th is='sortable' :column="'id_user'">{{ trans('admin.bien.columns.id_user') }}</th>
                                         <th is='sortable' :column="'id_agence'">{{ trans('admin.bien.columns.id_agence') }}</th>
-                                        <th is='sortable' :column="'id_type_bien'">{{ trans('admin.bien.columns.id_type_bien') }}</th>
+                                        <th is='sortable' :column="'id_typebien'">{{ trans('admin.bien.columns.id_typebien') }}</th>
                                         <th is='sortable' :column="'id_statut_bien'">{{ trans('admin.bien.columns.id_statut_bien') }}</th>
                                         <th is='sortable' :column="'id_etat_bien'">{{ trans('admin.bien.columns.id_etat_bien') }}</th>
                                         <th is='sortable' :column="'id_localite'">{{ trans('admin.bien.columns.id_localite') }}</th>
@@ -96,7 +96,7 @@
                                         <td>@{{ item.image }}</td>
                                         <td>@{{ item.id_user }}</td>
                                         <td>@{{ item.id_agence }}</td>
-                                        <td>@{{ item.id_type_bien }}</td>
+                                        <td>@{{ item.id_typebien }}</td>
                                         <td>@{{ item.id_statut_bien }}</td>
                                         <td>@{{ item.id_etat_bien }}</td>
                                         <td>@{{ item.id_localite }}</td>

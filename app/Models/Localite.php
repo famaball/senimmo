@@ -10,16 +10,16 @@ class Localite extends Model
 
     protected $fillable = [
         'nom',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -27,5 +27,10 @@ class Localite extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/localites/'.$this->getKey());
+    }
+
+    public function bien()
+    {
+        $this->hasMany(localite::class);
     }
 }

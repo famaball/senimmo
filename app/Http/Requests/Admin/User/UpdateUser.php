@@ -32,7 +32,7 @@ class UpdateUser extends FormRequest
             'email_verified_at' => ['nullable', 'date'],
             'mot_de_passe' => ['sometimes', 'string'],
             'telephone' => ['sometimes', 'string'],
-            'id_profile' => ['sometimes', 'integer'],
+            'id_roles' => ['sometimes', 'integer'],
             'id_agence' => ['sometimes', 'integer'],
             
         ];

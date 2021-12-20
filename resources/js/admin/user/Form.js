@@ -11,7 +11,7 @@ Vue.component('user-form', {
                 email_verified_at:  '' ,
                 mot_de_passe:  '' ,
                 telephone:  '' ,
-                id_profile:  '' ,
+                id_roles:  '' ,
                 id_agence:  '' ,
                 
             }

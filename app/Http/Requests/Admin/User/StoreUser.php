@@ -32,7 +32,7 @@ class StoreUser extends FormRequest
             'email_verified_at' => ['nullable', 'date'],
             'mot_de_passe' => ['required', 'string'],
             'telephone' => ['required', 'string'],
-            'id_profile' => ['required', 'integer'],
+            'id_roles' => ['required', 'integer'],
             'id_agence' => ['required', 'integer'],
             
         ];

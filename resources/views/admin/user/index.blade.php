@@ -56,7 +56,7 @@
                                         <th is='sortable' :column="'email_verified_at'">{{ trans('admin.user.columns.email_verified_at') }}</th>
                                         <th is='sortable' :column="'mot_de_passe'">{{ trans('admin.user.columns.mot_de_passe') }}</th>
                                         <th is='sortable' :column="'telephone'">{{ trans('admin.user.columns.telephone') }}</th>
-                                        <th is='sortable' :column="'id_profile'">{{ trans('admin.user.columns.id_profile') }}</th>
+                                        <th is='sortable' :column="'id_roles'">{{ trans('admin.user.columns.id_roles') }}</th>
                                         <th is='sortable' :column="'id_agence'">{{ trans('admin.user.columns.id_agence') }}</th>
 
                                         <th></th>
@@ -88,7 +88,7 @@
                                         <td>@{{ item.email_verified_at | datetime }}</td>
                                         <td>@{{ item.mot_de_passe }}</td>
                                         <td>@{{ item.telephone }}</td>
-                                        <td>@{{ item.id_profile }}</td>
+                                        <td>@{{ item.id_roles }}</td>
                                         <td>@{{ item.id_agence }}</td>
                                         
                                         <td>

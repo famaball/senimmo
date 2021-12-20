@@ -9,16 +9,16 @@ class Role extends Model
     protected $fillable = [
         'name',
         'guard_name',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -26,5 +26,9 @@ class Role extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/roles/'.$this->getKey());
+    }
+    public function user()
+    {
+        $this->hasMany(user::class);
     }
 }

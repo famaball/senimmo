@@ -352,3 +352,63 @@ $factory->define(App\Models\User::class, static function (Faker\Generator $faker
         
     ];
 });
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\TypeBien::class, static function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Bien::class, static function (Faker\Generator $faker) {
+    return [
+        'libelle' => $faker->sentence,
+        'adresse' => $faker->sentence,
+        'prix' => $faker->sentence,
+        'type' => $faker->sentence,
+        'surface' => $faker->sentence,
+        'description' => $faker->sentence,
+        'image' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        'id_user' => $faker->randomNumber(5),
+        'id_agence' => $faker->randomNumber(5),
+        'id_statut_bien' => $faker->randomNumber(5),
+        'id_etat_bien' => $faker->randomNumber(5),
+        'id_localite' => $faker->randomNumber(5),
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Typebien::class, static function (Faker\Generator $faker) {
+    return [
+        'nom' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Bien::class, static function (Faker\Generator $faker) {
+    return [
+        'libelle' => $faker->sentence,
+        'adresse' => $faker->sentence,
+        'prix' => $faker->sentence,
+        'type' => $faker->sentence,
+        'surface' => $faker->sentence,
+        'description' => $faker->sentence,
+        'image' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        'id_user' => $faker->randomNumber(5),
+        'id_agence' => $faker->randomNumber(5),
+        'id_typebien' => $faker->randomNumber(5),
+        'id_statut_bien' => $faker->randomNumber(5),
+        'id_etat_bien' => $faker->randomNumber(5),
+        'id_localite' => $faker->randomNumber(5),
+        
+        
+    ];
+});

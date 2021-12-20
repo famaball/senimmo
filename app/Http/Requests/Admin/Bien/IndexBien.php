@@ -25,7 +25,7 @@ class IndexBien extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:id,libelle,adresse,prix,type,surface,description,image,id_user,id_agence,id_type_bien,id_statut_bien,id_etat_bien,id_localite|nullable',
+            'orderBy' => 'in:id,libelle,adresse,prix,type,surface,description,image,id_user,id_agence,id_typebien,id_statut_bien,id_etat_bien,id_localite|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

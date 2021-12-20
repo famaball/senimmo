@@ -603,5 +603,155 @@ return [
         ],
     ],
 
+    'localite' => [
+        'title' => 'Localite',
+
+        'actions' => [
+            'index' => 'Localite',
+            'create' => 'New Localite',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
+    'type-bien' => [
+        'title' => 'Type Bien',
+
+        'actions' => [
+            'index' => 'Type Bien',
+            'create' => 'New Type Bien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
+    'type-bien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            
+        ],
+    ],
+
+    'type-bien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
+    'bien' => [
+        'title' => 'Bien',
+
+        'actions' => [
+            'index' => 'Bien',
+            'create' => 'New Bien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'libelle' => 'Libelle',
+            'adresse' => 'Adresse',
+            'prix' => 'Prix',
+            'type' => 'Type',
+            'surface' => 'Surface',
+            'description' => 'Description',
+            'image' => 'Image',
+            'id_user' => 'Id user',
+            'id_agence' => 'Id agence',
+            'id_statut_bien' => 'Id statut bien',
+            'id_etat_bien' => 'Id etat bien',
+            'id_localite' => 'Id localite',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
+    'bien' => [
+        'title' => 'Bien',
+
+        'actions' => [
+            'index' => 'Bien',
+            'create' => 'New Bien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'libelle' => 'Libelle',
+            'adresse' => 'Adresse',
+            'prix' => 'Prix',
+            'type' => 'Type',
+            'surface' => 'Surface',
+            'description' => 'Description',
+            'image' => 'Image',
+            'id_user' => 'Id user',
+            'id_agence' => 'Id agence',
+            'id_typebien' => 'Id typebien',
+            'id_statut_bien' => 'Id statut bien',
+            'id_etat_bien' => 'Id etat bien',
+            'id_localite' => 'Id localite',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

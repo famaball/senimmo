@@ -18,20 +18,20 @@ class Bien extends Model
         'image',
         'id_user',
         'id_agence',
-        'id_type_bien',
+        'id_typebien',
         'id_statut_bien',
         'id_etat_bien',
         'id_localite',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -39,5 +39,35 @@ class Bien extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/biens/'.$this->getKey());
+    }
+
+    public function user()
+    {
+        $this->belongsTo(user::class);
+    }
+
+    public function agence()
+    {
+        $this->belongsTo(agence::class);
+    }
+
+    public function typebien()
+    {
+        $this->hasOne(typebien::class);
+    }
+
+    public function statut_bien()
+    {
+        $this->hasOne(statut_bien::class);
+    }
+
+    public function etat_bien()
+    {
+        $this->hasOne(etat_bien::class);
+    }
+
+    public function localite()
+    {
+        $this->belongsTo(localite::class);
     }
 }

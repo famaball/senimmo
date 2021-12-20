@@ -35,7 +35,7 @@ class StoreBien extends FormRequest
             'image' => ['required', 'string'],
             'id_user' => ['required', 'integer'],
             'id_agence' => ['required', 'integer'],
-            'id_type_bien' => ['required', 'integer'],
+            'id_typebien' => ['required', 'integer'],
             'id_statut_bien' => ['required', 'integer'],
             'id_etat_bien' => ['required', 'integer'],
             'id_localite' => ['required', 'integer'],

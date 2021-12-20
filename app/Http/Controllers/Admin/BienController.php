@@ -8,7 +8,13 @@ use App\Http\Requests\Admin\Bien\DestroyBien;
 use App\Http\Requests\Admin\Bien\IndexBien;
 use App\Http\Requests\Admin\Bien\StoreBien;
 use App\Http\Requests\Admin\Bien\UpdateBien;
+use App\Models\Agence;
 use App\Models\Bien;
+use App\Models\EtatBien;
+use App\Models\Localite;
+use App\Models\StatutBien;
+use App\Models\Typebien;
+use App\Models\User;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -63,9 +69,17 @@ class BienController extends Controller
      */
     public function create()
     {
+
+        $user = User::all();
+        $agence = Agence::all();
+        $typebien = Typebien::all();
+        $statut_bien = StatutBien::all();
+        $etat_bien = EtatBien::all();
+        $localite = Localite::all();
+
         $this->authorize('admin.bien.create');
 
-        return view('admin.bien.create');
+        return view('admin.bien.create',compact('user','agence','statut_bien','etat_bien','localite','typebien'));
     }
 
     /**
@@ -77,10 +91,26 @@ class BienController extends Controller
     public function store(StoreBien $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        //$sanitized = $request->getSanitized();
 
         // Store the Bien
-        $bien = Bien::create($sanitized);
+        //$bien = Bien::create($sanitized);
+
+        $bien = new Bien();
+        $bien->libelle = $request['libelle']=$request['libelle'];
+        $bien->adresse = $request['adresse']=$request['adresse'];
+        $bien->prix = $request['prix']=$request['prix'];
+        $bien->type = $request['type']=$request['type'];
+        $bien->surface = $request['surface']=$request['surface'];
+        $bien->description = $request['description']=$request['description'];
+        $bien->image = $request['image']=$request['image'];
+        $bien->id_user= $request['id_user']=$request['id_user'];
+        $bien->id_agence= $request['id_agence']=$request['id_agence'];
+        $bien->id_typebien= $request['id_typebien']=$request['id_typebien'];
+        $bien->id_statut_bien= $request['id_statut_bien']=$request['id_statut_bien'];
+        $bien->id_etat_bien= $request['id_etat_bien']=$request['id_etat_bien'];
+        $bien->id_localite= $request['id_localite']=$request['id_localite'];
+        $bien->save();
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/biens'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

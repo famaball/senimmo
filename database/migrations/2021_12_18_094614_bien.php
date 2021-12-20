@@ -36,10 +36,10 @@ class Bien extends Migration
                   ->on('agence')
                   ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('id_type_bien')->unsigned();
-            $table->foreign('id_type_bien')
+            $table->integer('id_typebien')->unsigned();
+            $table->foreign('id_typebien')
                   ->references('id')
-                  ->on('type_bien')
+                  ->on('typebien')
                   ->onDelete('cascade')->onUpdate('cascade');
 
             $table->integer('id_statut_bien')->unsigned();

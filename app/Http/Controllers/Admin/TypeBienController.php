@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\TypeBien\BulkDestroyTypeBien;
-use App\Http\Requests\Admin\TypeBien\DestroyTypeBien;
-use App\Http\Requests\Admin\TypeBien\IndexTypeBien;
-use App\Http\Requests\Admin\TypeBien\StoreTypeBien;
-use App\Http\Requests\Admin\TypeBien\UpdateTypeBien;
-use App\Models\TypeBien;
+use App\Http\Requests\Admin\Typebien\BulkDestroyTypebien;
+use App\Http\Requests\Admin\Typebien\DestroyTypebien;
+use App\Http\Requests\Admin\Typebien\IndexTypebien;
+use App\Http\Requests\Admin\Typebien\StoreTypebien;
+use App\Http\Requests\Admin\Typebien\UpdateTypebien;
+use App\Models\Typebien;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -20,19 +20,19 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
-class TypeBienController extends Controller
+class TypebienController extends Controller
 {
 
     /**
      * Display a listing of the resource.
      *
-     * @param IndexTypeBien $request
+     * @param IndexTypebien $request
      * @return array|Factory|View
      */
-    public function index(IndexTypeBien $request)
+    public function index(IndexTypebien $request)
     {
         // create and AdminListing instance for a specific model and
-        $data = AdminListing::create(TypeBien::class)->processRequestAndGet(
+        $data = AdminListing::create(Typebien::class)->processRequestAndGet(
             // pass the request with params
             $request,
 
@@ -52,7 +52,7 @@ class TypeBienController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.type-bien.index', ['data' => $data]);
+        return view('admin.typebien.index', ['data' => $data]);
     }
 
     /**
@@ -63,42 +63,42 @@ class TypeBienController extends Controller
      */
     public function create()
     {
-        $this->authorize('admin.type-bien.create');
+        $this->authorize('admin.typebien.create');
 
-        return view('admin.type-bien.create');
+        return view('admin.typebien.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreTypeBien $request
+     * @param StoreTypebien $request
      * @return array|RedirectResponse|Redirector
      */
-    public function store(StoreTypeBien $request)
+    public function store(StoreTypebien $request)
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
 
-        // Store the TypeBien
-        $typeBien = TypeBien::create($sanitized);
+        // Store the Typebien
+        $typebien = Typebien::create($sanitized);
 
         if ($request->ajax()) {
-            return ['redirect' => url('admin/type-biens'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+            return ['redirect' => url('admin/typebiens'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }
 
-        return redirect('admin/type-biens');
+        return redirect('admin/typebiens');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param TypeBien $typeBien
+     * @param Typebien $typebien
      * @throws AuthorizationException
      * @return void
      */
-    public function show(TypeBien $typeBien)
+    public function show(Typebien $typebien)
     {
-        $this->authorize('admin.type-bien.show', $typeBien);
+        $this->authorize('admin.typebien.show', $typebien);
 
         // TODO your code goes here
     }
@@ -106,56 +106,56 @@ class TypeBienController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param TypeBien $typeBien
+     * @param Typebien $typebien
      * @throws AuthorizationException
      * @return Factory|View
      */
-    public function edit(TypeBien $typeBien)
+    public function edit(Typebien $typebien)
     {
-        $this->authorize('admin.type-bien.edit', $typeBien);
+        $this->authorize('admin.typebien.edit', $typebien);
 
 
-        return view('admin.type-bien.edit', [
-            'typeBien' => $typeBien,
+        return view('admin.typebien.edit', [
+            'typebien' => $typebien,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateTypeBien $request
-     * @param TypeBien $typeBien
+     * @param UpdateTypebien $request
+     * @param Typebien $typebien
      * @return array|RedirectResponse|Redirector
      */
-    public function update(UpdateTypeBien $request, TypeBien $typeBien)
+    public function update(UpdateTypebien $request, Typebien $typebien)
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
 
-        // Update changed values TypeBien
-        $typeBien->update($sanitized);
+        // Update changed values Typebien
+        $typebien->update($sanitized);
 
         if ($request->ajax()) {
             return [
-                'redirect' => url('admin/type-biens'),
+                'redirect' => url('admin/typebiens'),
                 'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
             ];
         }
 
-        return redirect('admin/type-biens');
+        return redirect('admin/typebiens');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param DestroyTypeBien $request
-     * @param TypeBien $typeBien
+     * @param DestroyTypebien $request
+     * @param Typebien $typebien
      * @throws Exception
      * @return ResponseFactory|RedirectResponse|Response
      */
-    public function destroy(DestroyTypeBien $request, TypeBien $typeBien)
+    public function destroy(DestroyTypebien $request, Typebien $typebien)
     {
-        $typeBien->delete();
+        $typebien->delete();
 
         if ($request->ajax()) {
             return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
@@ -167,17 +167,17 @@ class TypeBienController extends Controller
     /**
      * Remove the specified resources from storage.
      *
-     * @param BulkDestroyTypeBien $request
+     * @param BulkDestroyTypebien $request
      * @throws Exception
      * @return Response|bool
      */
-    public function bulkDestroy(BulkDestroyTypeBien $request) : Response
+    public function bulkDestroy(BulkDestroyTypebien $request) : Response
     {
         DB::transaction(static function () use ($request) {
             collect($request->data['ids'])
                 ->chunk(1000)
                 ->each(static function ($bulkChunk) {
-                    TypeBien::whereIn('id', $bulkChunk)->delete();
+                    Typebien::whereIn('id', $bulkChunk)->delete();
 
                     // TODO your code goes here
                 });
