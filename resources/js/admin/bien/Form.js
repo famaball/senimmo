@@ -8,7 +8,6 @@ Vue.component('bien-form', {
                 libelle:  '' ,
                 adresse:  '' ,
                 prix:  '' ,
-                type:  '' ,
                 surface:  '' ,
                 description:  '' ,
                 image:  '' ,

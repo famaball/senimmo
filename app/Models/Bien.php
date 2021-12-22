@@ -12,7 +12,6 @@ class Bien extends Model
         'libelle',
         'adresse',
         'prix',
-        'type',
         'surface',
         'description',
         'image',

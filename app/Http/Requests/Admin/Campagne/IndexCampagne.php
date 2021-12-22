@@ -25,7 +25,7 @@ class IndexCampagne extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:id,nom,sujet,contenu,nom_emetteur,email_emetteur,send_to_all|nullable',
+            'orderBy' => 'in:id,nom,sujet,contenu,nom_emetteur,email_emetteur,send_to_all,id_type_campagne,id_statut_campagne|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

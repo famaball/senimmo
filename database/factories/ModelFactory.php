@@ -412,3 +412,57 @@ $factory->define(App\Models\Bien::class, static function (Faker\Generator $faker
         
     ];
 });
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Bien::class, static function (Faker\Generator $faker) {
+    return [
+        'libelle' => $faker->sentence,
+        'adresse' => $faker->sentence,
+        'prix' => $faker->sentence,
+        'surface' => $faker->sentence,
+        'description' => $faker->sentence,
+        'image' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        'id_user' => $faker->randomNumber(5),
+        'id_agence' => $faker->randomNumber(5),
+        'id_typebien' => $faker->randomNumber(5),
+        'id_statut_bien' => $faker->randomNumber(5),
+        'id_etat_bien' => $faker->randomNumber(5),
+        'id_localite' => $faker->randomNumber(5),
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Contact::class, static function (Faker\Generator $faker) {
+    return [
+        'nom' => $faker->sentence,
+        'prenom' => $faker->sentence,
+        'email' => $faker->email,
+        'telephone' => $faker->sentence,
+        'localite' => $faker->sentence,
+        'sexe' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        'id_type_contact' => $faker->randomNumber(5),
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Campagne::class, static function (Faker\Generator $faker) {
+    return [
+        'nom' => $faker->sentence,
+        'sujet' => $faker->sentence,
+        'contenu' => $faker->sentence,
+        'nom_emetteur' => $faker->sentence,
+        'email_emetteur' => $faker->sentence,
+        'send_to_all' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        'id_type_campagne' => $faker->randomNumber(5),
+        'id_statut_campagne' => $faker->randomNumber(5),
+        
+        
+    ];
+});

@@ -753,5 +753,254 @@ return [
         ],
     ],
 
+    'bien' => [
+        'title' => 'Bien',
+
+        'actions' => [
+            'index' => 'Bien',
+            'create' => 'New Bien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'libelle' => 'Libelle',
+            'adresse' => 'Adresse',
+            'prix' => 'Prix',
+            'surface' => 'Surface',
+            'description' => 'Description',
+            'image' => 'Image',
+            'id_user' => 'Id user',
+            'id_agence' => 'Id agence',
+            'id_typebien' => 'Id typebien',
+            'id_statut_bien' => 'Id statut bien',
+            'id_etat_bien' => 'Id etat bien',
+            'id_localite' => 'Id localite',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
+    'bien' => [
+        'title' => 'Bien',
+
+        'actions' => [
+            'index' => 'Bien',
+            'create' => 'New Bien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'libelle' => 'Libelle',
+            'adresse' => 'Adresse',
+            'prix' => 'Prix',
+            'surface' => 'Surface',
+            'description' => 'Description',
+            'image' => 'Image',
+            'id_user' => 'Id user',
+            'id_agence' => 'Id agence',
+            'id_typebien' => 'Id typebien',
+            'id_statut_bien' => 'Id statut bien',
+            'id_etat_bien' => 'Id etat bien',
+            'id_localite' => 'Id localite',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
+    'bien' => [
+        'title' => 'Bien',
+
+        'actions' => [
+            'index' => 'Bien',
+            'create' => 'New Bien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'libelle' => 'Libelle',
+            'adresse' => 'Adresse',
+            'prix' => 'Prix',
+            'surface' => 'Surface',
+            'description' => 'Description',
+            'image' => 'Image',
+            'id_user' => 'Id user',
+            'id_agence' => 'Id agence',
+            'id_typebien' => 'Id typebien',
+            'id_statut_bien' => 'Id statut bien',
+            'id_etat_bien' => 'Id etat bien',
+            'id_localite' => 'Id localite',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
+    'contact' => [
+        'title' => 'Contact',
+
+        'actions' => [
+            'index' => 'Contact',
+            'create' => 'New Contact',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            'prenom' => 'Prenom',
+            'email' => 'Email',
+            'telephone' => 'Telephone',
+            'localite' => 'Localite',
+            'sexe' => 'Sexe',
+            
+        ],
+    ],
+
+    'contact' => [
+        'title' => 'Contact',
+
+        'actions' => [
+            'index' => 'Contact',
+            'create' => 'New Contact',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            'prenom' => 'Prenom',
+            'email' => 'Email',
+            'telephone' => 'Telephone',
+            'localite' => 'Localite',
+            'sexe' => 'Sexe',
+            'id_type_contact' => 'Id type contact',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
+    'contact' => [
+        'title' => 'Contact',
+
+        'actions' => [
+            'index' => 'Contact',
+            'create' => 'New Contact',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            'prenom' => 'Prenom',
+            'email' => 'Email',
+            'telephone' => 'Telephone',
+            'localite' => 'Localite',
+            'sexe' => 'Sexe',
+            'id_type_contact' => 'Id type contact',
+            
+        ],
+    ],
+
+    'campagne' => [
+        'title' => 'Campagne',
+
+        'actions' => [
+            'index' => 'Campagne',
+            'create' => 'New Campagne',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            'sujet' => 'Sujet',
+            'contenu' => 'Contenu',
+            'nom_emetteur' => 'Nom emetteur',
+            'email_emetteur' => 'Email emetteur',
+            'send_to_all' => 'Send to all',
+            'id_type_campagne' => 'Id type campagne',
+            'id_statut_campagne' => 'Id statut campagne',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

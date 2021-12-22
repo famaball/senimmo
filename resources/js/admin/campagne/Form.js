@@ -11,6 +11,8 @@ Vue.component('campagne-form', {
                 nom_emetteur:  '' ,
                 email_emetteur:  '' ,
                 send_to_all:  '' ,
+                id_type_campagne:  '' ,
+                id_statut_campagne:  '' ,
                 
             }
         }

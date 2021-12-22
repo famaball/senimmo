@@ -10,16 +10,16 @@ class Ciblage extends Model
 
     protected $fillable = [
         'designation',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -27,5 +27,10 @@ class Ciblage extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/ciblages/'.$this->getKey());
+    }
+
+    public function campagne()
+    {
+        $this->hasMany(campagne::class);
     }
 }

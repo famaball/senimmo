@@ -30,8 +30,10 @@ class UpdateCampagne extends FormRequest
             'sujet' => ['sometimes', 'string'],
             'contenu' => ['sometimes', 'string'],
             'nom_emetteur' => ['sometimes', 'string'],
-            'email_emetteur' => ['sometimes', 'string'],
+            'email_emetteur' => ['sometimes', Rule::unique('campagne', 'email_emetteur')->ignore($this->campagne->getKey(), $this->campagne->getKeyName()), 'string'],
             'send_to_all' => ['sometimes', 'string'],
+            'id_type_campagne' => ['sometimes', 'integer'],
+            'id_statut_campagne' => ['sometimes', 'integer'],
             
         ];
     }

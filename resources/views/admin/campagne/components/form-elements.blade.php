@@ -46,4 +46,34 @@
     </div>
 </div>
 
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_type_campagne'), 'has-success': fields.id_type_campagne && fields.id_type_campagne.valid }">
+    <label for="id_type_campagne" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.campagne.columns.id_type_campagne') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+            <select name="id_type_campagne" id="id_type_campagne" v-model="form.id_type_campagne" v-validate="'required|integer'" class="form-control"
+            :class="{'form-control-danger': errors.has('id_type_campagne'), 'form-control-success': fields.id_type_campagne && fields.id_type_campagne.valid}"
+            placeholder="{{ trans('admin.campagne.columns.id_type_campagne') }}">
+            <option value="">choisir un type campagne</option>
+                @foreach($type_campagne as $tp)
+                    <option value="{{ $tp->id }}">{{ $tp->description}}</option>
+                @endforeach
+            </select>
+        <div v-if="errors.has('id_type_campagne')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_type_campagne') }}</div>
+    </div>
+</div>
+
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_statut_campagne'), 'has-success': fields.id_statut_campagne && fields.id_statut_campagne.valid }">
+    <label for="id_statut_campagne" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.campagne.columns.id_statut_campagne') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+            <select name="id_statut_campagne" id="id_statut_campagne" v-model="form.id_statut_campagne" v-validate="'required|integer'" class="form-control"
+            :class="{'form-control-danger': errors.has('id_statut_campagne'), 'form-control-success': fields.id_statut_campagne && fields.id_statut_campagne.valid}"
+            placeholder="{{ trans('admin.campagne.columns.id_statut_campagne') }}">
+            <option value="">choisir un statut campagne</option>
+                @foreach($statut_campagne as $sc)
+                    <option value="{{ $sc->id }}">{{ $sc->description}}</option>
+                @endforeach
+            </select>
+        <div v-if="errors.has('id_statut_campagne')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_statut_campagne') }}</div>
+    </div>
+</div>
+
 

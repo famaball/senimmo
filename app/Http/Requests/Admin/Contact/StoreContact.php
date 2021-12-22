@@ -32,6 +32,7 @@ class StoreContact extends FormRequest
             'telephone' => ['required', 'string'],
             'localite' => ['required', 'string'],
             'sexe' => ['required', 'string'],
+            'id_type_contact' => ['required', 'integer'],
             
         ];
     }

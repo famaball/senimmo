@@ -56,11 +56,13 @@
                                         <th is='sortable' :column="'nom_emetteur'">{{ trans('admin.campagne.columns.nom_emetteur') }}</th>
                                         <th is='sortable' :column="'email_emetteur'">{{ trans('admin.campagne.columns.email_emetteur') }}</th>
                                         <th is='sortable' :column="'send_to_all'">{{ trans('admin.campagne.columns.send_to_all') }}</th>
+                                        <th is='sortable' :column="'id_type_campagne'">{{ trans('admin.campagne.columns.id_type_campagne') }}</th>
+                                        <th is='sortable' :column="'id_statut_campagne'">{{ trans('admin.campagne.columns.id_statut_campagne') }}</th>
 
                                         <th></th>
                                     </tr>
                                     <tr v-show="(clickedBulkItemsCount > 0) || isClickedAll">
-                                        <td class="bg-bulk-info d-table-cell text-center" colspan="9">
+                                        <td class="bg-bulk-info d-table-cell text-center" colspan="11">
                                             <span class="align-middle font-weight-light text-dark">{{ trans('brackets/admin-ui::admin.listing.selected_items') }} @{{ clickedBulkItemsCount }}.  <a href="#" class="text-primary" @click="onBulkItemsClickedAll('/admin/campagnes')" v-if="(clickedBulkItemsCount < pagination.state.total)"> <i class="fa" :class="bulkCheckingAllLoader ? 'fa-spinner' : ''"></i> {{ trans('brackets/admin-ui::admin.listing.check_all_items') }} @{{ pagination.state.total }}</a> <span class="text-primary">|</span> <a
                                                         href="#" class="text-primary" @click="onBulkItemsClickedAllUncheck()">{{ trans('brackets/admin-ui::admin.listing.uncheck_all_items') }}</a>  </span>
 
@@ -86,6 +88,8 @@
                                         <td>@{{ item.nom_emetteur }}</td>
                                         <td>@{{ item.email_emetteur }}</td>
                                         <td>@{{ item.send_to_all }}</td>
+                                        <td>@{{ item.id_type_campagne }}</td>
+                                        <td>@{{ item.id_statut_campagne }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

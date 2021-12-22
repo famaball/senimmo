@@ -22,6 +22,11 @@ class Contact extends Migration
             $table->string('localite');
             $table->string('sexe');
             $table->timestamps();
+            $table->integer('id_type_contact')->unsigned();
+            $table->foreign('id_type_contact')
+                  ->references('id')
+                  ->on('type_contact')
+                  ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

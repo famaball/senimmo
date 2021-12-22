@@ -29,7 +29,6 @@ class StoreBien extends FormRequest
             'libelle' => ['required', 'string'],
             'adresse' => ['required', 'string'],
             'prix' => ['required', 'string'],
-            'type' => ['required', 'string'],
             'surface' => ['required', 'string'],
             'description' => ['required', 'string'],
             'image' => ['required', 'string'],

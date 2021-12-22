@@ -56,11 +56,12 @@
                                         <th is='sortable' :column="'telephone'">{{ trans('admin.contact.columns.telephone') }}</th>
                                         <th is='sortable' :column="'localite'">{{ trans('admin.contact.columns.localite') }}</th>
                                         <th is='sortable' :column="'sexe'">{{ trans('admin.contact.columns.sexe') }}</th>
+                                        <th is='sortable' :column="'id_type_contact'">{{ trans('admin.contact.columns.id_type_contact') }}</th>
 
                                         <th></th>
                                     </tr>
                                     <tr v-show="(clickedBulkItemsCount > 0) || isClickedAll">
-                                        <td class="bg-bulk-info d-table-cell text-center" colspan="9">
+                                        <td class="bg-bulk-info d-table-cell text-center" colspan="10">
                                             <span class="align-middle font-weight-light text-dark">{{ trans('brackets/admin-ui::admin.listing.selected_items') }} @{{ clickedBulkItemsCount }}.  <a href="#" class="text-primary" @click="onBulkItemsClickedAll('/admin/contacts')" v-if="(clickedBulkItemsCount < pagination.state.total)"> <i class="fa" :class="bulkCheckingAllLoader ? 'fa-spinner' : ''"></i> {{ trans('brackets/admin-ui::admin.listing.check_all_items') }} @{{ pagination.state.total }}</a> <span class="text-primary">|</span> <a
                                                         href="#" class="text-primary" @click="onBulkItemsClickedAllUncheck()">{{ trans('brackets/admin-ui::admin.listing.uncheck_all_items') }}</a>  </span>
 
@@ -86,6 +87,7 @@
                                         <td>@{{ item.telephone }}</td>
                                         <td>@{{ item.localite }}</td>
                                         <td>@{{ item.sexe }}</td>
+                                        <td>@{{ item.id_type_contact }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

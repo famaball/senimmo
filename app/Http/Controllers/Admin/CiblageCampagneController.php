@@ -8,6 +8,8 @@ use App\Http\Requests\Admin\CiblageCampagne\DestroyCiblageCampagne;
 use App\Http\Requests\Admin\CiblageCampagne\IndexCiblageCampagne;
 use App\Http\Requests\Admin\CiblageCampagne\StoreCiblageCampagne;
 use App\Http\Requests\Admin\CiblageCampagne\UpdateCiblageCampagne;
+use App\Models\Campagne;
+use App\Models\Ciblage;
 use App\Models\CiblageCampagne;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
@@ -63,9 +65,11 @@ class CiblageCampagneController extends Controller
      */
     public function create()
     {
+        $campagne = Campagne::all();
+        $ciblage = Ciblage::all();
         $this->authorize('admin.ciblage-campagne.create');
 
-        return view('admin.ciblage-campagne.create');
+        return view('admin.ciblage-campagne.create',compact('ciblage','campagne'));
     }
 
     /**
@@ -77,10 +81,15 @@ class CiblageCampagneController extends Controller
     public function store(StoreCiblageCampagne $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        //$sanitized = $request->getSanitized();
 
         // Store the CiblageCampagne
-        $ciblageCampagne = CiblageCampagne::create($sanitized);
+        //$ciblageCampagne = CiblageCampagne::create($sanitized);
+
+        $ciblagne_campagne = new CiblageCampagne();
+        $ciblagne_campagne->id_ciblage = $request['id_ciblage']=$request['id_ciblage'];
+        $ciblagne_campagne->id_campagne = $request['id_campagne']=$request['id_campagne'];
+        $ciblagne_campagne->save();
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/ciblage-campagnes'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

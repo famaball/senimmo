@@ -43,10 +43,10 @@ class BienController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'libelle', 'adresse', 'prix', 'type', 'surface', 'description', 'image', 'id_user', 'id_agence', 'id_type_bien', 'id_statut_bien', 'id_etat_bien', 'id_localite'],
+            ['id', 'libelle', 'adresse', 'prix', 'surface', 'description', 'image', 'id_user', 'id_agence', 'id_typebien', 'id_statut_bien', 'id_etat_bien', 'id_localite'],
 
             // set columns to searchIn
-            ['id', 'libelle', 'adresse', 'prix', 'type', 'surface', 'description']
+            ['id', 'libelle', 'adresse', 'prix', 'surface', 'description', 'image']
         );
 
         if ($request->ajax()) {
@@ -96,11 +96,11 @@ class BienController extends Controller
         // Store the Bien
         //$bien = Bien::create($sanitized);
 
+
         $bien = new Bien();
         $bien->libelle = $request['libelle']=$request['libelle'];
         $bien->adresse = $request['adresse']=$request['adresse'];
         $bien->prix = $request['prix']=$request['prix'];
-        $bien->type = $request['type']=$request['type'];
         $bien->surface = $request['surface']=$request['surface'];
         $bien->description = $request['description']=$request['description'];
         $bien->image = $request['image']=$request['image'];
@@ -118,7 +118,6 @@ class BienController extends Controller
 
         return redirect('admin/biens');
     }
-
     /**
      * Display the specified resource.
      *

@@ -9,6 +9,8 @@ use App\Http\Requests\Admin\Campagne\IndexCampagne;
 use App\Http\Requests\Admin\Campagne\StoreCampagne;
 use App\Http\Requests\Admin\Campagne\UpdateCampagne;
 use App\Models\Campagne;
+use App\Models\StatutCampagne;
+use App\Models\TypeCampagne;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -37,7 +39,7 @@ class CampagneController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'nom', 'sujet', 'contenu', 'nom_emetteur', 'email_emetteur', 'send_to_all'],
+            ['id', 'nom', 'sujet', 'contenu', 'nom_emetteur', 'email_emetteur', 'send_to_all', 'id_type_campagne', 'id_statut_campagne'],
 
             // set columns to searchIn
             ['id', 'nom', 'sujet', 'contenu', 'nom_emetteur', 'email_emetteur', 'send_to_all']
@@ -63,9 +65,12 @@ class CampagneController extends Controller
      */
     public function create()
     {
+        $type_campagne = TypeCampagne::all();
+        $statut_campagne = StatutCampagne::all();
+
         $this->authorize('admin.campagne.create');
 
-        return view('admin.campagne.create');
+        return view('admin.campagne.create',compact('type_campagne','statut_campagne'));
     }
 
     /**
@@ -77,10 +82,21 @@ class CampagneController extends Controller
     public function store(StoreCampagne $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        //$sanitized = $request->getSanitized();
 
         // Store the Campagne
-        $campagne = Campagne::create($sanitized);
+        //$campagne = Campagne::create($sanitized);
+
+        $campagne = new Campagne();
+        $campagne->nom = $request['nom']=$request['nom'];
+        $campagne->sujet = $request['sujet']=$request['sujet'];
+        $campagne->contenu = $request['contenu']=$request['contenu'];
+        $campagne->email_emetteur = $request['email_emetteur']=$request['email_emetteur'];
+        $campagne->nom_emetteur = $request['nom_emetteur']=$request['nom_emetteur'];
+        $campagne->send_to_all = $request['send_to_all']=$request['send_to_all'];
+        $campagne->id_type_campagne = $request['id_type_campagne']=$request['id_type_campagne'];
+        $campagne->id_statut_campagne = $request['id_statut_campagne']=$request['id_statut_campagne'];
+        $campagne->save();
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/campagnes'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

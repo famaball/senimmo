@@ -5,7 +5,6 @@
             <li class="nav-item"><a class="nav-link" href="{{ url('admin/agences') }}"><i class="nav-icon icon-drop"></i> {{ trans('admin.agence.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/users') }}"><i class="nav-icon icon-star"></i> {{ trans('admin.user.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/reservations') }}"><i class="nav-icon icon-book-open"></i> {{ trans('admin.reservation.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/biens') }}"><i class="nav-icon icon-drop"></i> {{ trans('admin.bien.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/statut-biens') }}"><i class="nav-icon icon-flag"></i> {{ trans('admin.statut-bien.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/etat-biens') }}"><i class="nav-icon icon-flag"></i> {{ trans('admin.etat-bien.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/localites') }}"><i class="nav-icon icon-drop"></i> {{ trans('admin.localite.title') }}</a></li>
@@ -22,6 +21,7 @@
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/permissions') }}"><i class="nav-icon icon-globe"></i> {{ trans('admin.permission.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/role-has-permissions') }}"><i class="nav-icon icon-energy"></i> {{ trans('admin.role-has-permission.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/typebiens') }}"><i class="nav-icon icon-plane"></i> {{ trans('admin.typebien.title') }}</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url('admin/biens') }}"><i class="nav-icon icon-globe"></i> {{ trans('admin.bien.title') }}</a></li>
            {{-- Do not delete me :) I'm used for auto-generation menu items --}}
 
             <li class="nav-title">{{ trans('brackets/admin-ui::admin.sidebar.settings') }}</li>

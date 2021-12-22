@@ -29,7 +29,6 @@ class UpdateBien extends FormRequest
             'libelle' => ['sometimes', 'string'],
             'adresse' => ['sometimes', 'string'],
             'prix' => ['sometimes', 'string'],
-            'type' => ['sometimes', 'string'],
             'surface' => ['sometimes', 'string'],
             'description' => ['sometimes', 'string'],
             'image' => ['sometimes', 'string'],

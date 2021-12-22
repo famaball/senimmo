@@ -10,16 +10,16 @@ class TypeCampagne extends Model
 
     protected $fillable = [
         'description',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -27,5 +27,10 @@ class TypeCampagne extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/type-campagnes/'.$this->getKey());
+    }
+
+    public function campagne()
+    {
+        $this->hasMany(campagne::class);
     }
 }

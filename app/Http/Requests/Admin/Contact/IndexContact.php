@@ -25,7 +25,7 @@ class IndexContact extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:id,nom,prenom,email,telephone,localite,sexe|nullable',
+            'orderBy' => 'in:id,nom,prenom,email,telephone,localite,sexe,id_type_contact|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

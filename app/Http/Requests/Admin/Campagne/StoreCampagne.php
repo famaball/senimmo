@@ -30,8 +30,10 @@ class StoreCampagne extends FormRequest
             'sujet' => ['required', 'string'],
             'contenu' => ['required', 'string'],
             'nom_emetteur' => ['required', 'string'],
-            'email_emetteur' => ['required', 'string'],
+            'email_emetteur' => ['required', Rule::unique('campagne', 'email_emetteur'), 'string'],
             'send_to_all' => ['required', 'string'],
+            'id_type_campagne' => ['required', 'integer'],
+            'id_statut_campagne' => ['required', 'integer'],
             
         ];
     }

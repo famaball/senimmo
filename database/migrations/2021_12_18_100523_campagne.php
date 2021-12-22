@@ -22,6 +22,18 @@ class Campagne extends Migration
             $table->string('email_emetteur')->unique();
             $table->string('send_to_all');
             $table->timestamps();
+
+            $table->integer('id_type_campagne')->unsigned();
+            $table->foreign('id_type_campagne')
+                  ->references('id')
+                  ->on('type_campagne')
+                  ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->integer('id_statut_campagne')->unsigned();
+            $table->foreign('id_statut_campagne')
+                  ->references('id')
+                  ->on('statut_campagne')
+                  ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

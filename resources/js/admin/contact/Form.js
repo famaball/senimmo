@@ -11,6 +11,7 @@ Vue.component('contact-form', {
                 telephone:  '' ,
                 localite:  '' ,
                 sexe:  '' ,
+                id_type_contact:  '' ,
                 
             }
         }

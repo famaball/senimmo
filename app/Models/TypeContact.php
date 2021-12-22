@@ -10,16 +10,16 @@ class TypeContact extends Model
 
     protected $fillable = [
         'libelle',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -27,5 +27,10 @@ class TypeContact extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/type-contacts/'.$this->getKey());
+    }
+
+    public function contact()
+    {
+        $this->hasMany(contact::class);
     }
 }

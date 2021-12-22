@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\Contact\IndexContact;
 use App\Http\Requests\Admin\Contact\StoreContact;
 use App\Http\Requests\Admin\Contact\UpdateContact;
 use App\Models\Contact;
+use App\Models\TypeContact;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -37,7 +38,7 @@ class ContactController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'nom', 'prenom', 'email', 'telephone', 'localite', 'sexe'],
+            ['id', 'nom', 'prenom', 'email', 'telephone', 'localite', 'sexe', 'id_type_contact'],
 
             // set columns to searchIn
             ['id', 'nom', 'prenom', 'email', 'telephone', 'localite', 'sexe']
@@ -63,9 +64,10 @@ class ContactController extends Controller
      */
     public function create()
     {
+        $type_contact = TypeContact::all();
         $this->authorize('admin.contact.create');
 
-        return view('admin.contact.create');
+        return view('admin.contact.create',['type_contact'=>$type_contact]);
     }
 
     /**
@@ -77,10 +79,20 @@ class ContactController extends Controller
     public function store(StoreContact $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+       // $sanitized = $request->getSanitized();
 
         // Store the Contact
-        $contact = Contact::create($sanitized);
+       // $contact = Contact::create($sanitized);
+
+        $contact=new Contact();
+        $contact->nom = $request['nom']=$request['nom'];
+        $contact->prenom = $request['prenom']=$request['prenom'];
+        $contact->email = $request['email']=$request['email'];
+        $contact->telephone = $request['telephone']=$request['telephone'];
+        $contact->localite = $request['localite']=$request['localite'];
+        $contact->sexe = $request['sexe']=$request['sexe'];
+        $contact->id_type_contact = $request['id_type_contact']=$request['id_type_contact'];
+        $contact->save();
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/contacts'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

@@ -32,6 +32,7 @@ class UpdateContact extends FormRequest
             'telephone' => ['sometimes', 'string'],
             'localite' => ['sometimes', 'string'],
             'sexe' => ['sometimes', 'string'],
+            'id_type_contact' => ['sometimes', 'integer'],
             
         ];
     }

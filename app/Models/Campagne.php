@@ -15,16 +15,18 @@ class Campagne extends Model
         'nom_emetteur',
         'email_emetteur',
         'send_to_all',
-    
+        'id_type_campagne',
+        'id_statut_campagne',
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -32,5 +34,20 @@ class Campagne extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/campagnes/'.$this->getKey());
+    }
+
+    public function type_statut_campagne()
+    {
+        $this->hasOne(type_statut_campagne::class);
+    }
+
+    public function type_campagne()
+    {
+        $this->hasOne(type_campagne::class);
+    }
+
+    public function ciblage()
+    {
+        $this->hasMany(ciblage::class);
     }
 }
