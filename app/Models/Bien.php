@@ -69,4 +69,9 @@ class Bien extends Model
     {
         $this->belongsTo(localite::class);
     }
+
+    public function bien()
+    {
+        $this->hasMany(bien::class);
+    }
 }

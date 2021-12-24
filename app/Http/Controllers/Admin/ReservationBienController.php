@@ -8,7 +8,10 @@ use App\Http\Requests\Admin\ReservationBien\DestroyReservationBien;
 use App\Http\Requests\Admin\ReservationBien\IndexReservationBien;
 use App\Http\Requests\Admin\ReservationBien\StoreReservationBien;
 use App\Http\Requests\Admin\ReservationBien\UpdateReservationBien;
+use App\Models\Bien;
+use App\Models\Reservation;
 use App\Models\ReservationBien;
+use App\Models\User;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -63,9 +66,12 @@ class ReservationBienController extends Controller
      */
     public function create()
     {
+        $users= User::all();
+        $reservation=Reservation::all();
+        $bien=Bien::all();
         $this->authorize('admin.reservation-bien.create');
 
-        return view('admin.reservation-bien.create');
+        return view('admin.reservation-bien.create',compact('reservation', 'bien','users'));
     }
 
     /**
@@ -77,11 +83,16 @@ class ReservationBienController extends Controller
     public function store(StoreReservationBien $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+        //$sanitized = $request->getSanitized();
 
         // Store the ReservationBien
-        $reservationBien = ReservationBien::create($sanitized);
-
+        //$reservationBien = ReservationBien::create($sanitized);
+        $reservationbien = new ReservationBien();
+        $reservationbien->id_users = $request['id_users']=$request['id_users'];
+        $reservationbien->id_bien = $request['id_bien']=$request['id_bien'];
+        $reservationbien->id_reservation = $request['id_reservation']=$request['id_reservation'];
+        $reservationbien->date_reservation = $request['date_reservation']=$request['date_reservation'];
+        $reservationbien->save();
         if ($request->ajax()) {
             return ['redirect' => url('admin/reservation-biens'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }

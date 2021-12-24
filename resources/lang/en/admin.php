@@ -1002,5 +1002,70 @@ return [
         ],
     ],
 
+    'reservation-bien' => [
+        'title' => 'Reservation Bien',
+
+        'actions' => [
+            'index' => 'Reservation Bien',
+            'create' => 'New Reservation Bien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            
+        ],
+    ],
+
+    'reservation-bien' => [
+        'title' => 'Reservation Bien',
+
+        'actions' => [
+            'index' => 'Reservation Bien',
+            'create' => 'New Reservation Bien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'id_users' => 'Id users',
+            'id_bien' => 'Id bien',
+            'id_reservation' => 'Id reservation',
+            'date_reservation' => 'Date reservation',
+            
+        ],
+    ],
+
+    'typebien' => [
+        'title' => 'Typebien',
+
+        'actions' => [
+            'index' => 'Typebien',
+            'create' => 'New Typebien',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'nom' => 'Nom',
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

@@ -50,4 +50,9 @@ class Campagne extends Model
     {
         $this->hasMany(ciblage::class);
     }
+
+    public function contact()
+    {
+        $this->hasMany(contact::class);
+    }
 }

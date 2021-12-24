@@ -29,7 +29,7 @@ class UpdateReservationBien extends FormRequest
             'id_users' => ['sometimes', 'integer'],
             'id_bien' => ['sometimes', 'integer'],
             'id_reservation' => ['sometimes', 'integer'],
-            'date_reservation' => ['sometimes', 'integer'],
+            'date_reservation' => ['sometimes', 'date'],
             
         ];
     }

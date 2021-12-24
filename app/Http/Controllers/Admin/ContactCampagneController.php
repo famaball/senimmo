@@ -8,7 +8,10 @@ use App\Http\Requests\Admin\ContactCampagne\DestroyContactCampagne;
 use App\Http\Requests\Admin\ContactCampagne\IndexContactCampagne;
 use App\Http\Requests\Admin\ContactCampagne\StoreContactCampagne;
 use App\Http\Requests\Admin\ContactCampagne\UpdateContactCampagne;
+use App\Models\Campagne;
+use App\Models\Contact;
 use App\Models\ContactCampagne;
+use App\Models\TypeContact;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -63,9 +66,13 @@ class ContactCampagneController extends Controller
      */
     public function create()
     {
+
+        $contact=Contact::all();
+        $type_contact=TypeContact::all();
+        $campagne=Campagne::all();
         $this->authorize('admin.contact-campagne.create');
 
-        return view('admin.contact-campagne.create');
+        return view('admin.contact-campagne.create',compact('contact', 'type_contact', 'campagne'));
     }
 
     /**
@@ -77,10 +84,16 @@ class ContactCampagneController extends Controller
     public function store(StoreContactCampagne $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+       // $sanitized = $request->getSanitized();
 
         // Store the ContactCampagne
-        $contactCampagne = ContactCampagne::create($sanitized);
+        //$contactCampagne = ContactCampagne::create($sanitized);
+        $contactcampagne= new ContactCampagne();
+        $contactcampagne->id_contact = $request['id_contact']=$request['id_contact'];
+        $contactcampagne->id_type_contact = $request['id_type_contact']=$request['id_type_contact'];
+        $contactcampagne->id_campagne= $request['id_campagne']=$request['id_campagne'];
+        $contactcampagne->save();
+
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/contact-campagnes'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

@@ -13,16 +13,17 @@ class ReservationBien extends Model
         'id_bien',
         'id_reservation',
         'date_reservation',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+        'date_reservation',
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -30,5 +31,15 @@ class ReservationBien extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/reservation-biens/'.$this->getKey());
+    }
+
+    public function reservation()
+    {
+        $this->hasMany(reservation::class);
+    }
+
+    public function bien()
+    {
+        $this->hasMany(bien::class);
     }
 }

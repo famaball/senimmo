@@ -39,4 +39,9 @@ class Contact extends Model
     {
         $this->hasOne(type_contact::class);
     }
+
+    public function campagne()
+    {
+        $this->hasMany(campagne::class);
+    }
 }

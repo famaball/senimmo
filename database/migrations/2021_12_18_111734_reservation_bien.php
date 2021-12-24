@@ -34,11 +34,7 @@ class ReservationBien extends Migration
                   ->on('reservation')
                   ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('date_reservation')->unsigned();
-            $table->foreign('date_reservation')
-                  ->references('date')
-                  ->on('reservation')
-                  ->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamp('date_reservation');
 
         });
     }

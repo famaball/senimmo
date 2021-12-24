@@ -466,3 +466,30 @@ $factory->define(App\Models\Campagne::class, static function (Faker\Generator $f
         
     ];
 });
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\ReservationBien::class, static function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Typebien::class, static function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\ReservationBien::class, static function (Faker\Generator $faker) {
+    return [
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        'id_users' => $faker->randomNumber(5),
+        'id_bien' => $faker->randomNumber(5),
+        'id_reservation' => $faker->randomNumber(5),
+        'date_reservation' => $faker->dateTime,
+        
+        
+    ];
+});

@@ -81,7 +81,7 @@
                                         <td>@{{ item.id_users }}</td>
                                         <td>@{{ item.id_bien }}</td>
                                         <td>@{{ item.id_reservation }}</td>
-                                        <td>@{{ item.date_reservation }}</td>
+                                        <td>@{{ item.date_reservation | datetime }}</td>
                                         
                                         <td>
                                             <div class="row no-gutters">

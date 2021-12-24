@@ -29,7 +29,7 @@ class StoreReservationBien extends FormRequest
             'id_users' => ['required', 'integer'],
             'id_bien' => ['required', 'integer'],
             'id_reservation' => ['required', 'integer'],
-            'date_reservation' => ['required', 'integer'],
+            'date_reservation' => ['required', 'date'],
             
         ];
     }

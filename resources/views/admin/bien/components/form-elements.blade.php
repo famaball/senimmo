@@ -52,6 +52,7 @@
             <select name="id_user" id="id_user" v-model="form.id_user" v-validate="'required|integer'" class="form-control"
             :class="{'form-control-danger': errors.has('id_user'), 'form-control-success': fields.id_user && fields.id_user.valid}"
             placeholder="{{ trans('admin.bien.columns.id_user') }}">
+            <option value="">choisir un user</option>
                 @foreach($user as $user)
                     <option value="{{ $user->id }}">{{ $user->prenom}} {{ $user->nom}}</option>
                 @endforeach
@@ -67,6 +68,7 @@
             <select name="id_agence" id="id_agence" v-model="form.id_agence" v-validate="'required|integer'" class="form-control"
             :class="{'form-control-danger': errors.has('id_agence'), 'form-control-success': fields.id_agence && fields.id_agence.valid}"
             placeholder="{{ trans('admin.bien.columns.id_agence') }}">
+            <option value="">choisir une agence</option>
                 @foreach($agence as $agence)
                     <option value="{{ $agence->id }}">{{ $agence->nom}}</option>
                 @endforeach
