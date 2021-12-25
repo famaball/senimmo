@@ -37,7 +37,7 @@
             placeholder="{{ trans('admin.contact_campagne.columns.id_contact') }}">
             <option value="">choisir un contact</option>
                 @foreach($contact as $cont)
-                    <option value="{{ $cont->id }}">{{ $cont->nom}}</option>
+                    <option value="{{ $cont->id }}">{{ $cont->prenom}} {{ $cont->nom}}</option>
                 @endforeach
             </select>
         <div v-if="errors.has('id_contact')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_contact') }}</div>

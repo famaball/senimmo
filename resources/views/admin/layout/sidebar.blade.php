@@ -4,7 +4,6 @@
             <li class="nav-title">{{ trans('brackets/admin-ui::admin.sidebar.content') }}</li>
             <li class="nav-item"><a class="nav-link" href="{{ url('admin/agences') }}"><i class="nav-icon icon-drop"></i> {{ trans('admin.agence.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/users') }}"><i class="nav-icon icon-star"></i> {{ trans('admin.user.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/reservations') }}"><i class="nav-icon icon-book-open"></i> {{ trans('admin.reservation.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/statut-biens') }}"><i class="nav-icon icon-flag"></i> {{ trans('admin.statut-bien.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/etat-biens') }}"><i class="nav-icon icon-flag"></i> {{ trans('admin.etat-bien.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/localites') }}"><i class="nav-icon icon-drop"></i> {{ trans('admin.localite.title') }}</a></li>

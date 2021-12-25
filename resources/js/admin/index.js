@@ -3,7 +3,7 @@ import './profile-edit-profile';
 import './profile-edit-password';
 import './agence';
 import './user';
-import './reservation';
+// import './reservation';
 import './statut-bien';
 import './etat-bien';
 import './localite';

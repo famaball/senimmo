@@ -56,7 +56,7 @@
                 :class="{'form-control-danger': errors.has('id_roles'), 'form-control-success': fields.id_roles && fields.id_roles.valid}"
                 placeholder="{{ trans('admin.users.columns.id_roles') }}">
                     @foreach($role as $role)
-                        <option value="{{ $role->id }}">{{ $role->name}}</option>
+                        <option value="{{ $role->id }}">{{ $role->guard_name}}</option>
                     @endforeach
                 </select>
         <div v-if="errors.has('id_roles')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_roles') }}</div>
