@@ -69,7 +69,7 @@ class UsersController extends Controller
         $agence = Agence::all();
         $this->authorize('admin.user.create');
 
-        return view('admin.user.create',['role'=>$role],['agence'=>$agence]);
+        return view('admin.user.create',compact('role','agence'));
     }
 
     /**

@@ -493,3 +493,10 @@ $factory->define(App\Models\ReservationBien::class, static function (Faker\Gener
         
     ];
 });
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Login::class, static function (Faker\Generator $faker) {
+    return [
+        
+        
+    ];
+});

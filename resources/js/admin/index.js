@@ -22,3 +22,4 @@ import './permission';
 import './role-has-permission';
 import './typebien';
 import './bien';
+import './login';

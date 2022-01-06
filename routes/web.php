@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Agence\BienController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -388,3 +391,65 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         });
     });
 });
+Route::post('logged_in', [LoginController::class, 'authenticate']);
+
+
+Route::get('form', [LoginController::class, 'create']);
+
+
+
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('logins')->name('logins/')->group(static function() {
+            Route::get('/',                                             'LoginController@index')->name('index');
+            Route::get('/create',                                       'LoginController@create')->name('create');
+            Route::post('/',                                            'LoginController@store')->name('store');
+            Route::get('/{login}/edit',                                 'LoginController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'LoginController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{login}',                                     'LoginController@update')->name('update');
+            Route::delete('/{login}',                                   'LoginController@destroy')->name('destroy');
+        });
+    });
+});
+
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+
+    Route::prefix('agence')->namespace('App\Http\Controllers\Agence')->name('agence/')->group(static function() {
+        Route::prefix('biens')->name('biens/')->group(static function() {
+            Route::get('/',                                             'BienController@index')->name('index');
+            Route::get('/create',                                       'BienController@create')->name('create');
+            Route::post('/',                                            'BienController@store')->name('store');
+            Route::get('/{bien}/edit',                                  'BienController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'BienController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{bien}',                                      'BienController@update')->name('update');
+            Route::delete('/{bien}',                                    'BienController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+// Route::middleware()->group(static function () {
+//     Route::prefix('agence')->namespace('App\Http\Controllers\Agence')->name('agence/')->group(static function() {
+//         Route::prefix('type-biens')->name('type-biens/')->group(static function() {
+//             Route::get('/',                                             'TypeBienController@index')->name('index');
+//             Route::get('/create',                                       'TypeBienController@create')->name('create');
+//             Route::post('/',                                            'TypeBienController@store')->name('store');
+//             Route::get('/{typeBien}/edit',                              'TypeBienController@edit')->name('edit');
+//             Route::post('/bulk-destroy',                                'TypeBienController@bulkDestroy')->name('bulk-destroy');
+//             Route::post('/{typeBien}',                                  'TypeBienController@update')->name('update');
+//             Route::delete('/{typeBien}',                                'TypeBienController@destroy')->name('destroy');
+//         });
+//     });
+// });
+
+Route::prefix('agence')->group(function () {
+Route::get("biens",'BienController@index')->name('index');
+Route::get('bien', [Agence\BienController::class, 'index'])->name('index1');
+
+});
+
+

@@ -140,3 +140,5 @@
         <div v-if="errors.has('id_localite')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_localite') }}</div>
     </div>
 </div>
+
+

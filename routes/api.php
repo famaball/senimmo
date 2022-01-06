@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Bien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/bien', function () {
+    return Bien::all();
+});
+Route::post('/bien', function(Request $request) {
+ return Bien::create($request->all());
 });

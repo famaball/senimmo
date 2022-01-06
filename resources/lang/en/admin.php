@@ -1067,5 +1067,20 @@ return [
         ],
     ],
 
+    'login' => [
+        'title' => 'Login',
+
+        'actions' => [
+            'index' => 'Login',
+            'create' => 'New Login',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];
